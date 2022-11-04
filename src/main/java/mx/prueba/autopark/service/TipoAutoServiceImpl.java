@@ -39,6 +39,13 @@ public class TipoAutoServiceImpl implements TipoAutoService{
     }
 
     @Override
+    public TipoAuto findByTipo(String tipo) {
+        log.info("Looking for {}",tipo);
+        return repository.findByTipo(tipo);
+    }
+
+
+    @Override
     public List<TipoAuto> getTipoAutos() {
         log.info("Fetching all tipoAutos");
         return repository.findAll();

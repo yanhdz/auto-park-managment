@@ -18,19 +18,19 @@ public class TipoAutoResource {
     @Autowired
     private TipoAutoService tipoAutoService;
 
-    @PostMapping(value = "/TipoAutos", produces = "application/json")
+    @PostMapping(value = "/GET/tipo-autos", produces = "application/json")
     @ApiOperation(value = "Servicio que realiza el registro de Tipos de Auto")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
             @ApiResponse(code = 500, message = "Error inesperado")
     })
-    public ResponseEntity<ResponseAPI> getUsers(){
+    public ResponseEntity<ResponseAPI> getTipoAutosList(){
         ResponseAPI ResponseAPI = new ResponseAPI("TIPOAUTOS_00","Llamado Correcto",tipoAutoService.getTipoAutos());
         return new ResponseEntity<>(ResponseAPI, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/saveTipoAutos", produces = "application/json")
+    @PostMapping(value = "/SAVE/tipo-autos", produces = "application/json")
     @ApiOperation(value = "Servicio que realiza el guardado de Tipos de Auto")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
@@ -42,8 +42,8 @@ public class TipoAutoResource {
         return new ResponseEntity<>(responseCorpoAPI, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/deleteTipoAutos/{idTipoAuto}")
-    @ApiOperation(value = "Servicio que borra un Tipos de Auto por ID")
+    @DeleteMapping(value = "/DELETE/tipo-autos/{idTipoAuto}")
+    @ApiOperation(value = "Servicio que borra un Tipo de Auto por ID")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),

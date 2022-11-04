@@ -9,5 +9,6 @@ public interface TipoAutoService {
     TipoAuto saveTipoAuto(TipoAuto tipoAuto);
     void removeTipoAuto(Long id);
     Optional<TipoAuto> findById(Long id);
+    TipoAuto findByTipo(String tipo);
     List<TipoAuto> getTipoAutos();
 }
