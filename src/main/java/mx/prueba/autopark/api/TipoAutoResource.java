@@ -1,23 +1,61 @@
 package mx.prueba.autopark.api;
 
-import lombok.RequiredArgsConstructor;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import mx.prueba.autopark.domain.TipoAuto;
+import mx.prueba.autopark.dto.response.ResponseAPI;
 import mx.prueba.autopark.service.TipoAutoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class TipoAutoResource {
-    private final TipoAutoService tipoAutoService;
 
-    @RequestMapping(value = "/TipoAutos", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<TipoAuto>> getUsers(){
-        return ResponseEntity.ok().body(tipoAutoService.getTipoAutos());
+    @Autowired
+    private TipoAutoService tipoAutoService;
+
+    @PostMapping(value = "/TipoAutos", produces = "application/json")
+    @ApiOperation(value = "Servicio que realiza el registro de Tipos de Auto")
+    @ApiResponses(value= {
+            @ApiResponse(code = 201, message = "Respuesta exitosa"),
+            @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
+            @ApiResponse(code = 500, message = "Error inesperado")
+    })
+    public ResponseEntity<ResponseAPI> getUsers(){
+        ResponseAPI ResponseAPI = new ResponseAPI("TIPOAUTOS_00","Llamado Correcto",tipoAutoService.getTipoAutos());
+        return new ResponseEntity<>(ResponseAPI, HttpStatus.CREATED);
     }
+
+    @PostMapping(value = "/saveTipoAutos", produces = "application/json")
+    @ApiOperation(value = "Servicio que realiza el guardado de Tipos de Auto")
+    @ApiResponses(value= {
+            @ApiResponse(code = 201, message = "Respuesta exitosa"),
+            @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
+            @ApiResponse(code = 500, message = "Error inesperado")
+    })
+    public ResponseEntity<ResponseAPI> saveTipoAuto(@RequestBody TipoAuto tipoAuto){
+        ResponseAPI responseCorpoAPI = new ResponseAPI("TIPOAUTOS_01","Guardado Correcto",tipoAutoService.saveTipoAuto(tipoAuto));
+        return new ResponseEntity<>(responseCorpoAPI, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/deleteTipoAutos/{idTipoAuto}")
+    @ApiOperation(value = "Servicio que borra un Tipos de Auto por ID")
+    @ApiResponses(value= {
+            @ApiResponse(code = 201, message = "Respuesta exitosa"),
+            @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
+            @ApiResponse(code = 500, message = "Error inesperado")
+    })
+    public ResponseEntity<?> deleteTipoAuto(@PathVariable Long idTipoAuto){
+        if (!tipoAutoService.findById(idTipoAuto).isPresent())
+            return new ResponseEntity(new ResponseAPI("TIPOAUTOS_03","Tipo de Auto No encontrado",""), HttpStatus.NOT_FOUND);
+        else
+            tipoAutoService.removeTipoAuto(idTipoAuto);
+            return new ResponseEntity(new ResponseAPI("TIPOAUTOS_02","Borrado Correcto",""), HttpStatus.OK);
+    }
+
+
 }

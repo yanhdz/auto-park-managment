@@ -4,32 +4,38 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import mx.prueba.autopark.domain.TipoAuto;
 import mx.prueba.autopark.repository.TipoAutoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
 @Slf4j
 public class TipoAutoServiceImpl implements TipoAutoService{
 
-    private final TipoAutoRepository repository;
+    @Autowired
+    private  TipoAutoRepository repository;
 
     @Override
     public TipoAuto saveTipoAuto(TipoAuto tipoAuto) {
-        return null;
+        log.info("Saving Tipo Auto {} ",tipoAuto);
+        return repository.save(tipoAuto);
     }
 
     @Override
     public void removeTipoAuto(Long id) {
-
+        log.info("Removing Tipo Auto {} ",id);
+        Optional<TipoAuto> tipoAuto=repository.findById(id);
+        repository.delete(tipoAuto.get());
     }
 
     @Override
-    public TipoAuto findById(Long id) {
-        return null;
+    public Optional<TipoAuto> findById(Long id) {
+        log.info("Looking for {}",id);
+        return repository.findById(id);
     }
 
     @Override
