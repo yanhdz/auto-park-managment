@@ -10,15 +10,9 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ResponseAPI implements Serializable {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ResponseAPI.class);
-
     private String code;
     private String message;
     private Object response;
-
-    @Autowired
-    private MessageSource messageSource;
-
 
     public ResponseAPI(String code, String message, Object response) {
         this.code = code;

@@ -1,5 +1,6 @@
 package mx.prueba.autopark.configuration;
 
+import mx.prueba.autopark.api.AutoResource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ParameterBuilder;
