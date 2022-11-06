@@ -25,7 +25,7 @@ public class AutoResource {
     private TipoAutoService tipoAutoService;
 
     @PostMapping(value = "/GET/autos", produces = "application/json")
-    @ApiOperation(value = "Servicio que realiza el registro  de Auto")
+    @ApiOperation(value = "Servicio que regresa una lista de todos los autos")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
@@ -45,7 +45,7 @@ public class AutoResource {
     })
     public ResponseEntity<ResponseAPI> getAutosListEmpresa(){
         TipoAuto tipoAuto=tipoAutoService.findByTipo(TipoAutoEnum.EMPRESA.getTipo());
-        ResponseAPI ResponseAPI = new ResponseAPI("AutoS_00","Listado Autos Empresa",autoService.findAllByTipo(tipoAuto));
+        ResponseAPI ResponseAPI = new ResponseAPI("AutoS_01","Listado Autos Empresa",autoService.findAllByTipo(tipoAuto));
         return new ResponseEntity<>(ResponseAPI, HttpStatus.CREATED);
     }
 
@@ -58,12 +58,12 @@ public class AutoResource {
     })
     public ResponseEntity<ResponseAPI> getAutosListResidente(){
         TipoAuto tipoAuto=tipoAutoService.findByTipo(TipoAutoEnum.RESIDENTE.getTipo());
-        ResponseAPI ResponseAPI = new ResponseAPI("AutoS_00","Listado Autos Residente",autoService.findAllByTipo(tipoAuto));
+        ResponseAPI ResponseAPI = new ResponseAPI("AutoS_02","Listado Autos Residente",autoService.findAllByTipo(tipoAuto));
         return new ResponseEntity<>(ResponseAPI, HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/SAVE/empresa-auto", produces = "application/json")
-    @ApiOperation(value = "Servicio que realiza el guardado de Auto")
+    @ApiOperation(value = "Servicio que realiza el guardado de Auto de empresa")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
@@ -75,7 +75,7 @@ public class AutoResource {
     }
 
     @PostMapping(value = "/SAVE/residente-auto", produces = "application/json")
-    @ApiOperation(value = "Servicio que realiza el guardado de Auto")
+    @ApiOperation(value = "Servicio que realiza el guardado de Auto de residente")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
@@ -107,9 +107,9 @@ public class AutoResource {
             autoToSave.setYear(auto.getYear());
             autoToSave.setPlaca(auto.getPlaca());
             autoToSave.setFkTipoAuto(tipoAuto);
-            responseCorpoAPI = new ResponseAPI("AutoS_01","Guardado Correcto",autoService.saveAuto(autoToSave));
+            responseCorpoAPI = new ResponseAPI("AutoS_03","Guardado Correcto",autoService.saveAuto(autoToSave));
         }else{
-            responseCorpoAPI = new ResponseAPI("AutoS_02","Error al guardar auto",null);
+            responseCorpoAPI = new ResponseAPI("AutoS_04","Error al guardar auto",null);
         }
 
 
@@ -125,10 +125,10 @@ public class AutoResource {
     })
     public ResponseEntity<?> deleteAuto(@PathVariable Long idAuto){
         if (!autoService.findById(idAuto).isPresent())
-            return new ResponseEntity(new ResponseAPI("AutoS_03","Auto No encontrado",""), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new ResponseAPI("AutoS_05","Auto No encontrado",""), HttpStatus.NOT_FOUND);
         else
             autoService.removeAuto(idAuto);
-        return new ResponseEntity(new ResponseAPI("AutoS_02","Borrado Correcto",""), HttpStatus.OK);
+        return new ResponseEntity(new ResponseAPI("AutoS_06","Borrado Correcto",""), HttpStatus.OK);
     }
 
 

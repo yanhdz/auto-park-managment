@@ -19,7 +19,7 @@ public class TipoAutoResource {
     private TipoAutoService tipoAutoService;
 
     @PostMapping(value = "/GET/tipo-autos", produces = "application/json")
-    @ApiOperation(value = "Servicio que realiza el registro de Tipos de Auto")
+    @ApiOperation(value = "Servicio que regresa todos los tipos de auto")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),

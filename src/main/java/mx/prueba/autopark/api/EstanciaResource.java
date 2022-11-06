@@ -44,7 +44,7 @@ public class EstanciaResource {
     }
 
     @PostMapping(value = "/reporte-mensual/residente", produces = "application/json")
-    @ApiOperation(value = "Servicio que realiza La entrada de un auto a Estancia")
+    @ApiOperation(value = "Servicio que regresa un reporte de las estancias de auto de residente")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin Estanciarización para usar el servicio"),
@@ -90,7 +90,7 @@ public class EstanciaResource {
 
 
     @PostMapping(value = "/GET/estancias", produces = "application/json")
-    @ApiOperation(value = "Servicio que realiza el registro  de Estancia")
+    @ApiOperation(value = "Servicio que regresa todas las estancias")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
             @ApiResponse(code = 403, message = "Sin Estanciarización para usar el servicio"),
