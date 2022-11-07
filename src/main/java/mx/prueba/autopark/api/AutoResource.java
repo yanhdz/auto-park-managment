@@ -28,7 +28,7 @@ public class AutoResource {
     @ApiOperation(value = "Servicio que regresa una lista de todos los autos")
     @ApiResponses(value= {
             @ApiResponse(code = 201, message = "Respuesta exitosa"),
-            @ApiResponse(code = 403, message = "Sin autorización para usar el servicio"),
+            @ApiResponse(code = 401, message = "Sin autorización para usar el servicio"),
             @ApiResponse(code = 500, message = "Error inesperado")
     })
     public ResponseEntity<ResponseAPI> getAutosList(){
