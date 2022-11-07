@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "a54dff9f-b1cf-45c8-8cb3-d137876c3110",
+		"name": "Api AutoPark",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "974838"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/saveTipoAutos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n            \"tipo\": \"EMPRESA\",\r\n            \"precioMinuto\": 0.03\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/SAVE/tipo-autos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"SAVE",
+						"tipo-autos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/TipoAutos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhdXRvcGFyayIsImV4cCI6MTY2NzgxMTgyOCwiaWF0IjoxNjY3NzkzODI4fQ.wjvxqBeSf-DHsGgGytcjoaS1qLS93CrmFTphXszIWZiDvleK38m-TuzjAhUztF1hYiQHe-pkIxU7yskvozI1Zw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/GET/tipo-autos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"GET",
+						"tipo-autos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/deleteTipoAutos/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/DELETE/tipo-autos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"DELETE",
+						"tipo-autos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/SAVE/autos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"marca\":\"Toyota\",\r\n        \"modelo\":\"Corolla\",\r\n        \"year\":2012,\r\n        \"placa\":\"F50TYUILO\",\r\n        \"tipo\":\"EMPRESA\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/SAVE/empresa-auto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"SAVE",
+						"empresa-auto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/registro/salida",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"placa\":\"F50TYUILO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/registro/salida",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"registro",
+						"salida"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/registro/entrada",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"placa\":\"F50TYUILO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/registro/entrada",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"registro",
+						"entrada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/GET/autos-residente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/GET/autos-residente",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"GET",
+						"autos-residente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/reporte-mensual/residente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"placa\":\"F50TYUILO\",\r\n    \"year\":2022,\r\n    \"month\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/reporte-mensual/residente",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporte-mensual",
+						"residente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/reporte/empresa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"placa\":\"F50TYUILO\",\r\n    \"year\":2022,\r\n    \"month\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/reporte/empresa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporte",
+						"empresa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"autopark\",\r\n    \"password\":\"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
