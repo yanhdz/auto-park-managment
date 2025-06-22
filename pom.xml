@@ -11,7 +11,7 @@
     <groupId>mx.prueba</groupId>
     <artifactId>auto-park-management</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>auto-park-management</name>
     <description>auto-park-management</description>
     <properties>
